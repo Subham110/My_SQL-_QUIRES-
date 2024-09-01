@@ -1,0 +1,141 @@
+
+
+ /* How to Create a TABLE in SQL*/
+
+show DATABASES;  /* This command is used for TO check the server database Name */
+
+CREATE DATABASE my_Data; /* DATABASES Name, This command is used for create the database to the SERVER*/
+
+USE /* name of the server DATABASE name that --[show DATABASES] */my_Data ;   --database Name */
+ 
+SHOW TABLES;
+
+ CREATE Table class_1 (ID text(10),
+                       Name VARCHAR (20),
+                       Phone_NO int (10),
+                       DOB); /* This command is for to create the table of column */
+
+DESC class_1; /*This command is used for DESCRIBE the TABLE row of column's*/
+
+INSERT INTO class_1
+ (Id, Name, Phone_No, DOB) 
+ VALUES (1,"Subham",7854926631,'2003-03-23'); /*This command is used for to store the values or record or tuple or ROWS*/
+
+INSERT INTO class_1
+  VALUES (2,"Ritu",7639862543,'2004-07-12'); /*And you can Write this type*/
+
+INSERT INTO class_1
+ (Id, Name, Phone_No) 
+ VALUES (3,"Lucifer",7854763891); /* And this type*/
+
+INSERT INTO class_1
+ (Id, Name, Phone_No, DOB) 
+ VALUES (4,"Luci",7854967893,'2007-09-28'); /* 4 type you can write the INSERT statement*/
+
+INSERT INTO class_1
+ (Id, Name, Phone_No, DOB) 
+ VALUES (5,"Luci",7854967893,'2007-09-28'); 
+
+
+SELECT * FROM class_1; /*It means select the table name that you create in the DATABASE my_Data */
+
+/* Finally we create the class_1 Table in the server 127.0.0.1 */
+
+
+/* Than study About the SELECT statement */
+
+SELECT ID 
+from class_1; /*Show the id in column*/
+
+SELECT Name 
+from class_1; /*Show the Name in column*/
+
+SELECT Phone_No 
+from class_1; /*Show the Phone_No in column*/
+
+SELECT DOB 
+from class_1; /*Show the DOB in column*/
+
+SELECT * FROM class_1 
+where id = 3;        /*show the id information on the ROWS*/
+
+SELECT * FROM class_1 
+where Name = "Ritu";      /*Show the information Name of Ritu on the ROWS*/
+
+SELECT * FROM class_1 
+where DOB = '2004-07-12';   /*SHOW the information DOB = '_ _ _' */
+
+
+
+ /* Update - Alter - Delete - Drop */
+
+ UPDATE class_1 
+ SET BOD ='2005-09-29' where ID = 3;       /*This command is used for update the tuple or record or change the table or insert or change */
+ 
+ UPDATE class_1 
+ SET Phone_No = 9805673452 WHERE ID = 4; 
+
+ ALTER TABLE class_1 
+ ADD Email TEXT (20);   /*  Alter this command is used  to add the COLUMN or Domain Attribute */
+
+ ALTER TABLE class_1 
+ MODIFY Email TEXT (20);   /*  Alter this command is used  to add the COLUMN or Domain Attribute */
+
+ ALTER TABLE class_1 
+ DROP Email ;      /* This command is used for  drop  out the   column  or Domain attribute  */
+
+ DELETE FROM class_1 
+ WHERE  Id = 5;      /*this command is used for the delete the row of id = 5 */
+ 
+
+
+    /* Primary key   */
+
+ /* Create a new table  using the  primary KEY */
+
+CREATE TABLE class_2 (Roll_No not NULL PRIMARY KEY /* or int (10) PRIMARY KEY  */ , 
+                      student_Nmae VARCHAR (20),
+                      Address VARCHAR (40),
+                      Phone_No int (10));
+
+DESC  class_2 ;
+
+INSERT INTO  class_2 
+VALUES  (1,"hello",'@#',8906537842);  /*This primary key is used for that can't take Duplicate values  this is  (unique) */
+
+INSERT INTO  class_2 
+VALUES  (2,"hii",'$%',8906678842);
+
+INSERT INTO  class_2 
+VALUES  (3,"bye",'*&',8902567842);
+
+INSERT INTO  class_2 
+VALUES  (4,"Tata",'&%@',8908703842);
+
+SELECT * FROM class_2;
+
+
+
+/* JOIN OPERATION IN THE TWO TABLE */
+
+SHOW DATABASES;
+
+USE my_data;
+
+SHOW TABLES;
+
+SELECT * FROM student;
+
+SELECT * FROM student_data;
+
+SELECT * FROM student INNER JOIN student_data ON student.Roll_No = student_data.Roll_No;
+
+
+SELECT student.Roll_No,student.Name,Student.Class,student_data.BOD,student_data.Phone_No FROM student INNER JOIN student_data ON student.Roll_No = student_data.Roll_No;
+
+SELECT * FROM student LEFT JOIN student_data on student.Roll_No = student_data.Roll_No;
+
+SELECT * FROM student RIGHT JOIN student_data on student.Roll_No = student_data.Roll_No;
+
+SELECT student. Name, student_data.Phone_No FROM student RIGHT JOIN student_data on student.Roll_No = student_data.Roll_No ORDER BY student.Name;
+
